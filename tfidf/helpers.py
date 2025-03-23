@@ -17,7 +17,7 @@ def calc_tf_idf(idf:pd.Series, tf: pd.Series , uniq_toks: pd.Series):
     # iterate rows:
     ret = []
     for i in range(tf.shape[0]):
-        toks = uniq_toks[i]
+        toks = uniq_toks.iloc[i]
         tfs = tf.iloc[i]
         idfs = idf.iloc[toks].values
         tf_idf = tfs*idfs
@@ -91,8 +91,10 @@ def cosine_matrix(vs):
             elif ret[j,i] != 0:
                 ret[i,j] = ret[j,i]
             else:
-                ret[i,j] = cosine(vs[i],vs[j])
+                ret[i,j] = cosine(vs.iloc[i],vs.iloc[j])
     
     ret = pd.DataFrame(ret,index=vs.index, columns=vs.index)
     return ret
 
+def normalize(v):
+    return v/norm(v)

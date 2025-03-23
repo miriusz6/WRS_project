@@ -3,3 +3,4 @@ __pycache__/helpers.cpython-310.pyc
 /tfidf/__pycache__
 tfidf/__pycache__/tokenizerX.cpython-310.pyc
 tfidf/__pycache__/vectorizer.cpython-310.pyc
+/tfidf/__pycache__

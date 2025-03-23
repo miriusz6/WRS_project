@@ -84,4 +84,13 @@ class TokenizerX:
         else:
             self._word_freq[w] += 1
 
+    def copy(self):
+        ret = TokenizerX()
+        ret._word2idx = self._word2idx.copy()
+        ret._idx2word = self._idx2word.copy()
+        ret._word_freq = self._word_freq.copy()
+        ret.idx = self.idx
+        ret.update_mode = self.update_mode
+        return ret
+
             
