@@ -57,8 +57,15 @@ class TokenizerX:
             w = self.lemmatizer.lemmatize(w)
             if w in self.stop_words or not w in self.eng_words:
                 continue
+
+            if not to_ids:
+                if w in self._word2idx:
+                    ret.append(w)
+                continue
+
             if self.update_mode:
                 self._update(w)
+
             if w in self._word2idx:
                 ret.append(self._word2idx[w])
             else:
