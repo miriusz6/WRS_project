@@ -81,20 +81,43 @@ def cosine(v1,v2):
         return 0
     return np.dot(v1,v2)/n
 
-def cosine_matrix(vs):
+def cosine_matrix(vs1,vs2 = None):
     # compute cosine similarity for all pairs
-    ret = np.zeros((len(vs),len(vs)))
-    for i in range(len(vs)):
-        for j in range(len(vs)):
-            if i == j:
-                ret[i,j] = 1
-            elif ret[j,i] != 0:
-                ret[i,j] = ret[j,i]
-            else:
-                ret[i,j] = cosine(vs.iloc[i],vs.iloc[j])
-    
-    ret = pd.DataFrame(ret,index=vs.index, columns=vs.index)
+    if vs2 is None:
+        ret = np.zeros((len(vs1),len(vs1)))
+        for i in range(len(vs1)):
+            for j in range(len(vs1)):
+                if i == j:
+                    ret[i,j] = 1
+                elif ret[j,i] != 0:
+                    ret[i,j] = ret[j,i]
+                else:
+                    ret[i,j] = cosine(vs1.iloc[i],vs1.iloc[j])    
+        ret = pd.DataFrame(ret,index=vs1.index, columns=vs1.index)
+    else:
+        ret = np.zeros((len(vs1),len(vs2)))
+        for i in range(len(vs1)):
+            for j in range(len(vs2)):
+                ret[i,j] = cosine(vs1.iloc[i],vs2.iloc[j])
+        ret = pd.DataFrame(ret,index=vs1.index, columns=vs2.index)
     return ret
+
+
+# def cosine_matrix(vs):
+#     # compute cosine similarity for all pairs
+#     ret = np.zeros((len(vs),len(vs)))
+#     for i in range(len(vs)):
+#         for j in range(len(vs)):
+#             if i == j:
+#                 ret[i,j] = 1
+#             elif ret[j,i] != 0:
+#                 ret[i,j] = ret[j,i]
+#             else:
+#                 ret[i,j] = cosine(vs.iloc[i],vs.iloc[j])
+    
+#     ret = pd.DataFrame(ret,index=vs.index, columns=vs.index)
+#     return ret
+
 
 def normalize(v):
     return v/norm(v)
