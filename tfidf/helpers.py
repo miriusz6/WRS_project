@@ -103,6 +103,17 @@ def cosine_matrix(vs1,vs2 = None):
     return ret
 
 
+def simM_to_multi_indx_df(M:pd.DataFrame):
+    h = M.index
+    w = M.columns
+    ret = pd.DataFrame(data = np.zeros(len(h)*len(w)),
+                       index=pd.MultiIndex.from_product([h,w]),
+                       columns=['sim'])
+    for i,r in M.iterrows():
+        ret.loc[i,:] = r.values
+    return ret
+
+
 # def cosine_matrix(vs):
 #     # compute cosine similarity for all pairs
 #     ret = np.zeros((len(vs),len(vs)))
