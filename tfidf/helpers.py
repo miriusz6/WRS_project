@@ -22,7 +22,7 @@ def calc_tf_idf(idf:pd.Series, tf: pd.Series , uniq_toks: pd.Series):
         idfs = idf.iloc[toks].values
         tf_idf = tfs*idfs
         # normalize
-        tf_idf = tf_idf/norm(tf_idf)
+        #tf_idf = tf_idf/norm(tf_idf)
         ret.append(tf_idf)
     return ret
 
@@ -76,9 +76,12 @@ def tokenize_frame(tokenizer:TokenizerX, df:pd.DataFrame, col:str):
     return df_tokens, df_vocab
 
 def cosine(v1,v2):
+    # introduced 0.5 instead of 0 cuz range of cosine for tfidf
+    # if sum(v1) == 0 or sum(v2) == 0:
+    #     return 0.5
     n = (norm(v1)*norm(v2))
     if n == 0:
-        return 0
+        return 0 # 0.5
     return np.dot(v1,v2)/n
 
 def cosine_matrix(vs1,vs2 = None):
