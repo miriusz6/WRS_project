@@ -83,7 +83,7 @@ def plot_item_ratings_freq(df):
 
 def plot_user_ratings_freq(df):
     # user ratings overview
-    user_cnts = df['user_id'].value_counts()
+    user_cnts = df.reset_index(inplace=False)['user_id'].value_counts()
     print(user_cnts.head(10))
     print(user_cnts.tail(10))
     plot_kwargs = {
