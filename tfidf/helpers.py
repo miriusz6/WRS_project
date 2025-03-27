@@ -82,7 +82,7 @@ def cosine(v1,v2):
     n = (norm(v1)*norm(v2))
     if n == 0:
         return 0 # 0.5
-    return np.dot(v1,v2)/n
+    return round(np.dot(v1,v2)/n,3)
 
 def cosine_matrix(vs1,vs2 = None):
     # compute cosine similarity for all pairs
