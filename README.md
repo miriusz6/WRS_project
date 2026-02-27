@@ -1,3 +1,6 @@
+
+The project focuses on building and optimizing **recommendation systems** for musical instruments using **Amazon review data**. The primary objective was to investigate how different algorithmic strategies—from basic popularity metrics to advanced hybrids—could overcome the inherent challenges of sparse and highly skewed rating data. 
+
 The project was created by me as examination sumbission for the Web Recommender System during my Master's studies. For the full pdf repport see 'WRS_Project.pdf'
 
 ## 1. Data Processing and Exploration
