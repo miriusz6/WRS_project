@@ -117,21 +117,5 @@ def simM_to_multi_indx_df(M:pd.DataFrame):
     return ret
 
 
-# def cosine_matrix(vs):
-#     # compute cosine similarity for all pairs
-#     ret = np.zeros((len(vs),len(vs)))
-#     for i in range(len(vs)):
-#         for j in range(len(vs)):
-#             if i == j:
-#                 ret[i,j] = 1
-#             elif ret[j,i] != 0:
-#                 ret[i,j] = ret[j,i]
-#             else:
-#                 ret[i,j] = cosine(vs.iloc[i],vs.iloc[j])
-    
-#     ret = pd.DataFrame(ret,index=vs.index, columns=vs.index)
-#     return ret
-
-
 def normalize(v):
     return v/norm(v)
